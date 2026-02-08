@@ -4,30 +4,35 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>5 años contigo, Gotito ❤️</title>
-  <meta name="description" content="Una carta web por nuestro 5º aniversario — de Marelito para Gotito." />
+  <meta name="description" content="Carta web por nuestro 5º aniversario — de Marelito para Gotito." />
   <style>
     :root{
       --bg0:#fff7fb; --bg1:#ffe8f1; --bg2:#f3f4ff;
-      --card:#ffffffd9; --text:#111827; --muted:#6b7280;
+      --card:#ffffffea; --text:#111827; --muted:#6b7280;
       --accent:#e11d48; --accent2:#7c3aed;
-      --line:rgba(17,24,39,.10); --shadow: rgba(17,24,39,.10);
+      --line:rgba(17,24,39,.10);
+      --shadow: rgba(17,24,39,.12);
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
       background:
-        radial-gradient(900px 500px at 20% 10%, var(--bg1), transparent 60%),
+        radial-gradient(900px 500px at 18% 10%, var(--bg1), transparent 60%),
         radial-gradient(900px 500px at 85% 25%, var(--bg2), transparent 62%),
         linear-gradient(180deg, var(--bg0), #ffffff);
-      color:var(--text);
       overflow-x:hidden;
     }
+
+    /* Partículas suaves */
     .particle{
-      position:fixed; width:10px;height:10px; border-radius:999px;
-      background: rgba(225,29,72,.12); filter: blur(.2px);
-      pointer-events:none; animation: drift 12s linear infinite; z-index:0;
+      position:fixed; width:10px; height:10px; border-radius:999px;
+      background: rgba(225,29,72,.12);
+      pointer-events:none;
+      animation: drift 12s linear infinite;
+      z-index:0;
+      filter: blur(.2px);
     }
     @keyframes drift{
       from{transform: translateY(140px); opacity:0}
@@ -35,46 +40,77 @@
       to{transform: translateY(-900px); opacity:0}
     }
 
-    .wrap{width:min(980px, 92vw); margin:0 auto; padding:22px 0 50px; position:relative; z-index:1}
+    .wrap{
+      width:min(980px, 92vw);
+      margin:0 auto;
+      padding: 20px 0 50px;
+      position:relative;
+      z-index:1;
+    }
+
     header{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:14px; flex-wrap:wrap; padding:18px 14px 0;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:14px;
+      flex-wrap:wrap;
+      padding: 16px 12px 0;
     }
     .title{
-      margin:0; font-size: clamp(30px, 4.6vw, 54px);
-      line-height:1.05; letter-spacing:-.6px;
+      margin:0;
+      font-size: clamp(30px, 4.6vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.6px;
     }
     .title span{
       background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
     }
-    .subtitle{margin:10px 0 0; color:var(--muted); font-size:14px; text-transform: capitalize;}
+    .subtitle{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      text-transform: capitalize;
+    }
 
     .actions{display:flex; gap:10px; flex-wrap:wrap}
     button{
-      border:0; padding:10px 14px; border-radius:14px;
-      font-weight:800; cursor:pointer;
-      transition: transform .12s ease, opacity .12s ease;
+      border:0;
+      padding:10px 14px;
+      border-radius:14px;
+      font-weight:900;
+      cursor:pointer;
+      user-select:none;
+      touch-action: manipulation;
       box-shadow: 0 14px 34px rgba(0,0,0,.08);
-      user-select:none; touch-action: manipulation;
+      transition: transform .12s ease, opacity .12s ease;
     }
     button:active{transform: translateY(1px)}
     .btn-primary{background: linear-gradient(90deg, var(--accent), var(--accent2)); color:#fff}
     .btn-ghost{background:#fff; color:var(--text); border:1px solid rgba(0,0,0,.07)}
     .pill{
       display:inline-flex; gap:10px; align-items:center;
-      background:#fff; border:1px solid rgba(0,0,0,.06);
-      padding:10px 12px; border-radius:999px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.06);
+      padding:10px 12px;
+      border-radius:999px;
       box-shadow: 0 14px 34px rgba(0,0,0,.06);
-      font-weight:800;
+      font-weight:900;
     }
-    .pill small{font-weight:700; color:var(--muted)}
+    .pill small{font-weight:800; color:var(--muted)}
 
     .grid{
-      display:grid; grid-template-columns: 1.1fr .9fr;
-      gap:16px; margin-top:16px; padding:0 14px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      margin-top:16px;
+      padding: 0 12px;
     }
-    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
+    @media (max-width: 860px){
+      .grid{grid-template-columns:1fr}
+    }
 
     .card{
       background:var(--card);
@@ -82,112 +118,149 @@
       border-radius:24px;
       box-shadow: 0 22px 70px var(--shadow);
       overflow:hidden;
-      position:relative;
       backdrop-filter: blur(10px);
     }
-    .card .pad{padding:22px}
+    .pad{padding:22px}
     h2{margin:0 0 8px; font-size:22px; letter-spacing:-.2px}
     .muted{color:var(--muted)}
+    .divider{height:1px; background:var(--line); margin:16px 0}
 
+    /* Foto (sin overlays absolutos para evitar bugs en móvil) */
     .photo{
-      aspect-ratio: 16 / 10;
       width:100%;
-      object-fit:cover;
+      aspect-ratio: 16/10;
+      object-fit: cover;
       display:block;
       border-bottom:1px solid rgba(0,0,0,.06);
       background: linear-gradient(120deg, rgba(225,29,72,.10), rgba(124,58,237,.10));
     }
-    .photo-overlay{
-      position:absolute; inset:auto 16px 16px 16px;
-      background: rgba(255,255,255,.82);
-      border:1px solid rgba(0,0,0,.06);
-      border-radius:18px;
-      padding:12px 14px;
-      backdrop-filter: blur(8px);
+    .photoCaption{
+      padding:12px 22px;
+      background: rgba(255,255,255,.9);
+      border-bottom:1px solid rgba(0,0,0,.06);
+      font-weight:900;
     }
-    .photo-overlay b{display:block; font-size:14px}
-    .photo-overlay span{color:var(--muted); font-size:13px}
+    .photoCaption span{
+      display:block;
+      font-weight:800;
+      font-size:13px;
+      color:var(--muted);
+      margin-top:2px;
+    }
 
+    /* Carta */
     .letter p{
       margin:0 0 14px;
-      font-size:17px; line-height:1.85;
-      opacity:0; transform: translateY(10px);
+      font-size:17px;
+      line-height:1.85;
+      opacity:0;
+      transform: translateY(10px);
       transition: opacity .55s ease, transform .55s ease;
     }
     .letter p.on{opacity:1; transform: translateY(0)}
     .signature{
-      margin-top:14px; font-weight:900; font-size:17px;
-      opacity:0; transform: translateY(10px);
+      margin-top:14px;
+      font-weight:1000;
+      font-size:17px;
+      opacity:0;
+      transform: translateY(10px);
       transition: opacity .55s ease, transform .55s ease;
     }
     .signature.on{opacity:1; transform: translateY(0)}
-    .divider{height:1px; background:var(--line); margin:16px 0}
 
+    /* Panel derecho */
     .timeline{display:grid; gap:12px; margin-top:10px}
     .event{display:grid; grid-template-columns: 28px 1fr; gap:12px; align-items:flex-start}
     .dot{
       width:12px;height:12px;border-radius:999px;
       background: linear-gradient(180deg, var(--accent), var(--accent2));
-      margin-top:5px; box-shadow: 0 10px 24px rgba(225,29,72,.25);
+      margin-top:5px;
+      box-shadow: 0 10px 24px rgba(225,29,72,.25);
     }
     .event b{display:block}
     .event span{color:var(--muted); font-size:13px}
 
-    .reasons{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:12px}
+    .reasons{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:12px;
+    }
     @media (max-width: 520px){ .reasons{grid-template-columns:1fr} }
     .chip{
-      background:#fff; border:1px solid rgba(0,0,0,.06);
-      border-radius:18px; padding:12px 12px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:18px;
+      padding:12px 12px;
       box-shadow: 0 14px 34px rgba(0,0,0,.06);
-      display:flex; gap:10px; align-items:flex-start;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
     }
     .chip i{
-      font-style:normal; width:30px;height:30px;border-radius:12px;
+      font-style:normal;
+      width:30px;height:30px;border-radius:12px;
       display:grid;place-items:center;
       background: linear-gradient(120deg, rgba(225,29,72,.14), rgba(124,58,237,.14));
-      border:1px solid rgba(0,0,0,.05); flex:0 0 auto;
+      border:1px solid rgba(0,0,0,.05);
+      flex:0 0 auto;
     }
     .chip b{display:block; font-size:14px}
     .chip span{display:block; font-size:13px; color:var(--muted); margin-top:1px}
 
     .qbox{
-      margin-top:14px; background:#fff;
+      margin-top:14px;
+      background:#fff;
       border:1px solid rgba(0,0,0,.06);
-      border-radius:20px; padding:14px;
+      border-radius:20px;
+      padding:14px;
       box-shadow: 0 16px 44px rgba(0,0,0,.08);
-      position:relative; overflow:hidden;
+      position:relative;
+      overflow:hidden;
     }
     .qrow{position:relative; height:78px; margin-top:10px}
     .yes{
-      position:absolute; left:50%; transform: translateX(-120%); top:10px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2)); color:#fff;
+      position:absolute;
+      left:50%;
+      transform: translateX(-120%);
+      top:10px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color:#fff;
     }
     .no{
-      position:absolute; left:50%; transform: translateX(20%); top:10px;
+      position:absolute;
+      left:50%;
+      transform: translateX(20%);
+      top:10px;
       background:#f1f5f9;
       transition: left .12s ease, top .12s ease;
     }
-    .result{margin-top:10px; font-weight:900; color:var(--accent)}
+    .result{margin-top:10px; font-weight:1000; color:var(--accent)}
 
+    /* Modal compartir */
     .modal{
-      position:fixed; inset:0; display:none; place-items:center;
+      position:fixed; inset:0;
+      display:none; place-items:center;
       background: rgba(17,24,39,.46);
-      z-index:5; padding:16px;
+      z-index:10;
+      padding:16px;
     }
     .modal.show{display:grid}
-    .modal-card{
+    .modalCard{
       width:min(760px, 94vw);
-      background:#fff; border-radius:24px; overflow:hidden;
+      background:#fff;
+      border-radius:24px;
+      overflow:hidden;
       box-shadow: 0 30px 100px rgba(0,0,0,.30);
     }
-    .modal-head{
+    .modalHead{
       padding:14px 16px;
       display:flex; justify-content:space-between; align-items:center; gap:10px;
       border-bottom:1px solid rgba(0,0,0,.08);
       background: linear-gradient(90deg, rgba(225,29,72,.08), rgba(124,58,237,.08));
+      font-weight:1000;
     }
-    .modal-head b{font-size:14px}
-    .modal-body{padding:16px}
+    .modalBody{padding:16px}
     code{
       display:block; white-space:pre-wrap;
       background:#0b1220; color:#e5e7eb;
@@ -199,19 +272,6 @@
       *{animation:none !important; transition:none !important}
       .particle{display:none}
     }
-/* Fix mobile: Nuestra historia */
-.story{
-  margin-top: 24px;
-  padding-top: 16px;
-  clear: both;
-  position: relative;
-}
-
-@media (max-width: 600px){
-  .story{
-    margin-top: 32px;
-  }
-}
   </style>
 </head>
 <body>
@@ -223,9 +283,8 @@
         <h1 class="title"><span>5 años</span> contigo, Gotito ❤️</h1>
         <p class="subtitle" id="today"></p>
       </div>
-
       <div class="actions">
-        <div class="pill" title="Edita la fecha en el código si quieres que sea exacto">
+        <div class="pill" title="Contador desde 2021-02-14">
           ❤️ <span id="daysTogether">—</span> <small>días</small>
         </div>
         <button class="btn-ghost" id="musicBtn" onclick="toggleMusic()">🎵 Música: Apagada</button>
@@ -234,39 +293,43 @@
     </header>
 
     <div class="grid">
+      <!-- IZQUIERDA: Foto + Carta -->
       <section class="card">
         <img class="photo" src="photo.jpg" alt="Nuestra foto"
              onerror="this.style.display='none';document.getElementById('photoHelp').style.display='block';" />
-        <div class="photo-overlay">
-          <b>Nuestra historia</b>
-          <span>Un recuerdo que quiero llevar conmigo siempre.</span>
+        <div class="photoCaption" id="photoCaption">
+          Nuestra foto favorita
+          <span>Si no aparece, asegúrate de subir <b>photo.jpg</b> junto con index.html.</span>
         </div>
 
         <div class="pad">
           <div id="photoHelp" style="display:none; padding:10px 12px; border:1px dashed rgba(0,0,0,.18); border-radius:16px; background:rgba(0,0,0,.02); margin-bottom:14px;">
             <b>Falta la foto 😄</b>
             <div class="muted" style="font-size:13px; margin-top:4px;">
-              Pon una imagen en la misma carpeta y nómbrala <b>photo.jpg</b> (o cambia el nombre en el código).
+              Sube tu imagen en el repo y nómbrala <b>photo.jpg</b>.
             </div>
           </div>
 
           <h2>Mi Gotito</h2>
           <div class="muted" style="font-size:13px; margin-bottom:12px;">De Marelito, con todo mi amor.</div>
 
-          <div class="letter" id="letter">
+          <div class="letter">
             <p id="p1">
               Hoy celebramos 5 años… y todavía me sorprende lo bonito que es caminar contigo.
               Gracias por ser mi paz, mi risa y mi hogar en los días buenos y en los difíciles.
             </p>
             <p id="p2">
-              Amo tu forma de ser, tu manera de mirar el mundo y cómo, sin darte cuenta, haces que todo se sienta más posible.
-              Contigo aprendí que el amor no solo se dice: se cuida, se elige y se construye.
+              Amo tu forma de ser, tu manera de mirar el mundo y cómo, sin darte cuenta,
+              haces que todo se sienta más posible. Contigo aprendí que el amor no solo se dice:
+              se cuida, se elige y se construye.
             </p>
             <p id="p3">
               Si pudiera pedir un deseo, sería repetir estos cinco años… pero contigo otra vez,
               y después muchos más. <strong>Te elijo hoy, mañana y siempre.</strong>
             </p>
+
             <div class="divider"></div>
+
             <div class="signature" id="sig">
               Feliz 5º aniversario, mi amor.<br>
               Marelito ❤️
@@ -275,36 +338,17 @@
         </div>
       </section>
 
+      <!-- DERECHA: Camino + Razones + Pregunta -->
       <aside class="card">
         <div class="pad">
           <h2>Nuestro camino</h2>
-          <div class="muted" style="font-size:13px;">Edítalo con sus momentos favoritos ✨</div>
+          <div class="muted" style="font-size:13px;">(Puedes editar estos textos cuando quieras)</div>
 
-         <div class="timeline">
-  <div class="event">
-    <div class="dot"></div>
-    <div>
-      <b>El día que empezó todo</b>
-      <span>Ese 14 de febrero que cambió nuestras vidas.</span>
-    </div>
-  </div>
-
-  <div class="event">
-    <div class="dot"></div>
-    <div>
-      <b>Nuestro recuerdo favorito</b>
-      <span>Una tarde sencilla, pero perfecta, contigo.</span>
-    </div>
-  </div>
-
-  <div class="event">
-    <div class="dot"></div>
-    <div>
-      <b>Hoy: 5 años</b>
-      <span>Cinco años caminando juntos y muchos más por venir.</span>
-    </div>
-  </div>
-</div>
+          <div class="timeline">
+            <div class="event"><div class="dot"></div><div><b>El día que empezó todo</b><span>Ese 14 de febrero que cambió nuestras vidas.</span></div></div>
+            <div class="event"><div class="dot"></div><div><b>Nuestro recuerdo favorito</b><span>Una tarde sencilla, pero perfecta, contigo.</span></div></div>
+            <div class="event"><div class="dot"></div><div><b>Hoy: 5 años</b><span>Cinco años caminando juntos y muchos más por venir.</span></div></div>
+          </div>
 
           <div class="divider"></div>
 
@@ -313,7 +357,7 @@
             <div class="chip"><i>✨</i><div><b>Tu luz</b><span>Iluminas incluso mis días grises.</span></div></div>
             <div class="chip"><i>💗</i><div><b>Tu amor</b><span>Me haces sentir en casa.</span></div></div>
             <div class="chip"><i>😂</i><div><b>Tu risa</b><span>Mi sonido favorito.</span></div></div>
-            <div class="chip"><i>🤍</i><div><b>Tu forma de ser</b><span>Tan tú, tan perfecta.</span></div></div>
+            <div class="chip"><i>🤍</i><div><b>Tu forma</b><span>Tan tú, tan perfecta.</span></div></div>
             <div class="chip"><i>🫶</i><div><b>Tu apoyo</b><span>Siempre estás, de verdad.</span></div></div>
             <div class="chip"><i>🌙</i><div><b>Tu calma</b><span>Me das paz sin decir nada.</span></div></div>
           </div>
@@ -334,15 +378,16 @@
     </div>
   </div>
 
+  <!-- Modal compartir -->
   <div class="modal" id="modal">
-    <div class="modal-card">
-      <div class="modal-head">
-        <b>Mensaje para enviarle a Gotito</b>
+    <div class="modalCard">
+      <div class="modalHead">
+        Mensaje para enviarle a Gotito
         <button class="btn-ghost" onclick="closeShare()">Cerrar</button>
       </div>
-      <div class="modal-body">
+      <div class="modalBody">
         <div class="muted" style="font-size:13px; margin-bottom:10px;">
-          Si tu navegador lo permite, toca “Copiar”. Si no, copia el texto manualmente.
+          Toca “Copiar”. Si tu navegador no deja, copia manualmente.
         </div>
         <code id="shareText"></code>
         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
@@ -354,24 +399,24 @@
   </div>
 
   <script>
-    // ---------- Dates ----------
+    // Fecha visible
     const now = new Date();
     document.getElementById("today").textContent =
       now.toLocaleDateString("es-ES", { weekday:"long", day:"numeric", month:"long", year:"numeric" });
 
-    // Cambia esta fecha por el día que empezaron (AAAA-MM-DD)
-    const startDate = new Date("2021-02-14"); // <— EDITA AQUÍ
+    // Contador exacto desde 2021-02-14
+    const startDate = new Date("2021-02-14");
     const days = Math.max(0, Math.floor((now - startDate) / (1000*60*60*24)));
     document.getElementById("daysTogether").textContent = days.toLocaleString("es-ES");
 
-    // ---------- Letter reveal ----------
+    // Animación de aparición de la carta (sin afectar layout)
     ["p1","p2","p3","sig"].forEach((id, i) => {
       setTimeout(() => document.getElementById(id).classList.add("on"), 260 + i*520);
     });
 
-    // ---------- Particles ----------
+    // Partículas
     const holder = document.getElementById("particles");
-    for(let i=0;i<26;i++){
+    for(let i=0;i<24;i++){
       const p=document.createElement("div");
       p.className="particle";
       p.style.left = (Math.random()*100) + "vw";
@@ -387,7 +432,7 @@
       holder.appendChild(p);
     }
 
-    // ---------- “No” button that moves ----------
+    // Botón NO que se mueve
     const noBtn = document.getElementById("noBtn");
     const area = document.getElementById("btnArea");
     function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
@@ -404,7 +449,7 @@
       noBtn.style.top  = y + "px";
       if(initial) noBtn.style.transform = "none";
     }
-    setTimeout(()=>moveNo(true), 300);
+    setTimeout(()=>moveNo(true), 350);
     noBtn.addEventListener("mouseenter", () => moveNo());
     noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); }, {passive:false});
     area.addEventListener("touchstart", (e) => {
@@ -415,7 +460,7 @@
       if(dx < 70 && dy < 55) moveNo();
     }, {passive:true});
 
-    // ---------- Answer ----------
+    // Respuesta
     function answer(ok){
       const r=document.getElementById("result");
       if(ok){
@@ -433,7 +478,7 @@
         s.textContent = (i%3===0)?"💗":(i%3===1?"❤️":"💞");
         s.style.position="absolute";
         s.style.left = (20 + Math.random()*60) + "%";
-        s.style.top = "20px";
+        s.style.top = "18px";
         s.style.fontSize = (14 + Math.random()*10) + "px";
         s.style.opacity="0";
         s.style.transition="transform 900ms ease, opacity 900ms ease";
@@ -447,12 +492,12 @@
       }
     }
 
-    // ---------- Share modal ----------
+    // Compartir
     const modal = document.getElementById("modal");
     const shareText = document.getElementById("shareText");
     function openShare(){
       const url = window.location.href;
-      shareText.textContent = `Gotito ❤️\n\nTe hice una sorpresa por nuestro 5º aniversario:\n${url}\n\nÁbrela y mira nuestra foto 🥹💌`;
+      shareText.textContent = `Gotito ❤️\n\nTe hice una sorpresa por nuestro 5º aniversario:\n${url}\n\nTe amo, Marelito 💌`;
       modal.classList.add("show");
     }
     function closeShare(){ modal.classList.remove("show"); }
@@ -461,7 +506,7 @@
       catch(e){ alert("No pude copiar automático. Copia el texto manualmente 💗"); }
     }
 
-    // ---------- Soft music (Web Audio, no files) ----------
+    // Música suave (sin archivos)
     let audioCtx, masterGain, playing=false, intervalId=null;
     const musicBtn = document.getElementById("musicBtn");
     function setupAudio(){
@@ -475,8 +520,10 @@
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       const filter = audioCtx.createBiquadFilter();
-      osc.type="sine"; osc.frequency.setValueAtTime(freq, t);
-      filter.type="lowpass"; filter.frequency.setValueAtTime(1200, t);
+      osc.type="sine";
+      osc.frequency.setValueAtTime(freq, t);
+      filter.type="lowpass";
+      filter.frequency.setValueAtTime(1200, t);
       gain.gain.setValueAtTime(0.0001, t);
       gain.gain.exponentialRampToValueAtTime(0.12, t + 0.02);
       gain.gain.exponentialRampToValueAtTime(0.0001, t + duration);
