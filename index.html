@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>5 años — KM</title>
-  <meta name="description" content="Un detalle elegante por nuestro 5º aniversario." />
+
   <style>
     :root{
       --bg0:#070a0f;
@@ -13,1041 +13,150 @@
       --line:rgba(255,255,255,.10);
       --text:#e9edf5;
       --muted:#a8b2c2;
-
       --silver:#c7d0de;
       --silver2:#eef2f7;
-      --steel:#94a3b8;
-
       --shadow: rgba(0,0,0,.60);
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box}
     body{
       margin:0;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
       color:var(--text);
       background:
         radial-gradient(1100px 650px at 18% 12%, rgba(199,208,222,.10), transparent 58%),
         radial-gradient(900px 600px at 88% 18%, rgba(238,242,247,.07), transparent 62%),
-        radial-gradient(1000px 700px at 50% 110%, rgba(255,255,255,.05), transparent 62%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
-      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-      overflow-x:hidden;
     }
 
-    /* subtle grain */
-    .grain{
-      pointer-events:none;
-      position:fixed; inset:0;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
-      opacity:.06;
-      mix-blend-mode: overlay;
-      z-index:0;
-    }
+    .wrap{width:min(980px,92vw);margin:0 auto;padding:28px 0 60px}
+    header{padding:14px 10px 0}
+    h1{margin:0;font-size:clamp(30px,4.2vw,52px)}
+    h1 span{color:var(--silver2)}
+    .sub{color:var(--muted);font-family:system-ui;font-size:14px}
 
-    .wrap{
-      width:min(980px, 92vw);
-      margin: 0 auto;
-      padding: 28px 0 64px;
-      position:relative;
-      z-index:1;
-    }
-
-    header{
-      padding: 14px 10px 0;
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:16px;
-      flex-wrap:wrap;
-    }
-
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-size:12px;
-      color:var(--muted);
-    }
-    .kicker::before{
-      content:"";
-      width:34px;height:1px;
-      background: linear-gradient(90deg, rgba(199,208,222,.9), transparent);
-      opacity:.9;
-    }
-
-    h1{
-      margin:0;
-      font-weight:700;
-      letter-spacing:-.02em;
-      font-size: clamp(30px, 4.2vw, 52px);
-      line-height:1.05;
-    }
-    h1 span{ color: var(--silver2); }
-
-    .sub{
-      margin:0;
-      color:var(--muted);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      font-size:14px;
-      line-height:1.6;
-      text-transform: capitalize;
-    }
-
-    .meta{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    }
-
-    .pill{
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 18px 50px var(--shadow);
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      font-weight:650;
-      font-size:13px;
-      color:var(--text);
-    }
-    .pill small{ color:var(--muted); font-weight:650; }
-
-    .btn{
-      border:1px solid rgba(199,208,222,.35);
-      background: linear-gradient(180deg, rgba(199,208,222,.14), rgba(199,208,222,.07));
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:14px;
-      font-weight:700;
-      cursor:pointer;
-      box-shadow: 0 18px 50px var(--shadow);
-      transition: transform .12s ease, opacity .12s ease;
-      user-select:none;
-    }
-    .btn:active{ transform: translateY(1px); }
-
-    .grid{
-      margin-top:18px;
-      padding: 0 10px;
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:16px;
-    }
-    @media (max-width: 880px){
-      .grid{ grid-template-columns:1fr; }
-    }
+    .grid{margin-top:18px;padding:0 10px;display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
+    @media(max-width:880px){.grid{grid-template-columns:1fr}}
 
     .card{
       border:1px solid var(--line);
-      background: var(--card);
-      border-radius: 26px;
+      background:var(--card);
+      border-radius:26px;
       overflow:hidden;
       backdrop-filter: blur(14px);
-      box-shadow: 0 28px 90px var(--shadow);
+      box-shadow:0 28px 90px var(--shadow);
     }
 
-    /* Photo */
-    .photo{
-      width:100%;
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      display:block;
-      filter: saturate(.95) contrast(1.02);
-    }
-    /* If photo missing, hide the image area completely (no visible warnings) */
-    .photo.hidden{ display:none; }
+    .photo{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+    .photo.hidden{display:none}
 
-    .photoBar{
-      padding: 14px 18px;
-      border-top:1px solid var(--line);
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:center;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:var(--muted);
-      font-size:13px;
-    }
-    .photoBar b{ color:var(--text); font-weight:750; }
+    .pad{padding:22px}
 
-    .pad{ padding: 22px; }
-
-    .sectionTitle{
-      margin:0 0 10px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      text-transform: uppercase;
-      font-weight:850;
-      letter-spacing:.14em;
-      font-size:11px;
-      color: rgba(238,242,247,.88);
-    }
-
-    .divider{
-      height:1px;
-      background: linear-gradient(90deg, rgba(199,208,222,.35), rgba(255,255,255,.06), transparent);
-      margin: 16px 0;
-    }
-
-    /* Envelope */
-    .sealWrap{
-      padding: 26px 22px 22px;
-      text-align:center;
-    }
     .envelope{
-      width:min(520px, 100%);
-      margin: 0 auto;
-      border-radius: 22px;
-      border:1px solid rgba(255,255,255,.10);
-      background:
-        radial-gradient(900px 280px at 30% 0%, rgba(238,242,247,.10), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      box-shadow: 0 28px 80px rgba(0,0,0,.55);
-      overflow:hidden;
+      width:min(520px,100%);
+      margin:0 auto;
+      border-radius:22px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+      box-shadow:0 28px 80px rgba(0,0,0,.55);
       position:relative;
-    }
-    .envTop{
-      padding: 18px 18px 56px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      text-align:left;
-    }
-    .envTop b{
-      display:block;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-size:12px;
-      color:var(--muted);
-    }
-    .envTop h2{
-      margin:10px 0 0;
-      font-size:26px;
-      letter-spacing:-.02em;
-      font-weight:700;
+      overflow:hidden;
     }
 
-    /* Engraved round seal */
+    .envTop{padding:18px 18px 56px;border-bottom:1px solid var(--line)}
+    .envTop b{font-family:system-ui;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--muted)}
+    .envTop h2{margin:10px 0 0;font-size:26px}
+
+    /* SELLO PLATA GRABADO */
     .seal{
-      width:82px;height:82px;
-      border-radius:999px;
-      position:absolute;
-      left:50%; bottom:-41px;
-      transform: translateX(-50%);
+      width:82px;height:82px;border-radius:999px;
+      position:absolute;left:50%;bottom:-41px;transform:translateX(-50%);
       background:
         radial-gradient(circle at 28% 26%, rgba(255,255,255,.30), transparent 42%),
         radial-gradient(circle at 70% 82%, rgba(0,0,0,.24), transparent 48%),
         linear-gradient(180deg, rgba(238,242,247,.92), rgba(148,163,184,.58));
       border:1px solid rgba(0,0,0,.30);
-      box-shadow: 0 26px 78px rgba(0,0,0,.62);
-      display:grid;
-      place-items:center;
-      cursor:pointer;
-      user-select:none;
-      transition: transform .18s ease, filter .18s ease, opacity .25s ease;
-      isolation:isolate;
-    }
-    .seal::before{
-      content:"";
-      position:absolute; inset:7px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      opacity:.9;
-      pointer-events:none;
+      box-shadow:0 26px 78px rgba(0,0,0,.62);
+      display:grid;place-items:center;cursor:pointer;
     }
     .seal::after{
-      /* inner shadow to look engraved */
-      content:"";
-      position:absolute; inset:0;
-      border-radius:999px;
-      box-shadow:
-        inset 0 10px 18px rgba(255,255,255,.10),
-        inset 0 -14px 20px rgba(0,0,0,.28),
-        inset 0 0 0 1px rgba(255,255,255,.06);
-      pointer-events:none;
-    }
-    .seal:active{ transform: translateX(-50%) scale(.985); }
-
-    .mono{
-      width:48px;height:48px;
-      display:block;
-      position:relative;
-      z-index:1;
-      opacity:.98;
+      content:"";position:absolute;inset:0;border-radius:999px;
+      box-shadow:inset 0 10px 18px rgba(255,255,255,.10),
+                 inset 0 -14px 20px rgba(0,0,0,.28);
     }
     .mono text{
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      font-weight:900;
-      letter-spacing: 2px;
-      font-size: 30px;
-    }
-    /* Engraved effect: dark fill + subtle highlights + inset look */
-    .mono .engrave{
-      fill: rgba(8,12,18,.82);
-      filter:
-        drop-shadow(0 1px 0 rgba(255,255,255,.28))
-        drop-shadow(0 -1px 0 rgba(0,0,0,.38));
+      font-family:system-ui;font-weight:900;letter-spacing:2px;font-size:30px;
+      fill:rgba(8,12,18,.82);
+      filter:drop-shadow(0 1px 0 rgba(255,255,255,.28))
+             drop-shadow(0 -1px 0 rgba(0,0,0,.38));
     }
 
-    /* Letter */
-    .letter{
-      display:none;
-      padding: 22px 22px 22px;
-      text-align:left;
-    }
-    .letter.show{ display:block; animation: fadeUp .55s ease both; }
-    @keyframes fadeUp{
-      from{ opacity:0; transform: translateY(8px); }
-      to{ opacity:1; transform: translateY(0); }
-    }
-    .letter p{
-      margin: 0 0 14px;
-      font-size: 18px;
-      line-height: 1.9;
-      color: rgba(233,237,245,.96);
-    }
-    .letter p strong{ color: var(--silver2); }
-
-    .sig{
-      margin-top: 14px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      font-weight:900;
-      letter-spacing:.02em;
-    }
-    .sig small{
-      display:block;
-      color:var(--muted);
-      font-weight:700;
-      margin-top:4px;
-    }
-
-    /* Right column */
-    .list{
-      display:grid;
-      gap:12px;
-      margin-top: 10px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    }
-    .item{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      border-radius: 18px;
-      padding: 14px 14px;
-    }
-    .item b{
-      display:block;
-      color:var(--text);
-      font-weight:850;
-      margin-bottom:4px;
-    }
-    .item span{
-      color:var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .quote{
-      margin-top:14px;
-      border:1px solid rgba(199,208,222,.22);
-      background: linear-gradient(180deg, rgba(199,208,222,.08), rgba(255,255,255,.02));
-      border-radius: 20px;
-      padding: 16px 16px;
-    }
-    .quote p{
-      margin:0;
-      font-size:14px;
-      line-height:1.8;
-      color: rgba(233,237,245,.95);
-    }
-    .quote b{
-      display:block;
-      margin-top:10px;
-      color: rgba(238,242,247,.88);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-size:11px;
-      font-weight:900;
-    }
+    .letter{display:none;padding:22px}
+    .letter.show{display:block}
+    .letter p{font-size:18px;line-height:1.9}
+    .sig{margin-top:14px;font-family:system-ui;font-weight:900}
   </style>
 </head>
-
 <body>
-  <div class="grain"></div>
-
   <div class="wrap">
     <header>
-      <div>
-        <div class="kicker">Aniversario</div>
-        <h1><span>5 años</span> contigo, Gotito</h1>
-        <p class="sub" id="today"></p>
-      </div>
-
-      <div class="meta">
-        <div class="pill">KM <span id="daysTogether">—</span> <small>días</small></div>
-        <button class="btn" onclick="copyLink()">Copiar link</button>
-      </div>
+      <h1><span>5 años</span> contigo, Gotito</h1>
+      <p class="sub" id="today"></p>
     </header>
 
     <div class="grid">
-      <!-- Left -->
       <section class="card">
         <img id="photo" class="photo" src="photo.jpg" alt="KM" />
 
-        <div class="photoBar">
-          <div><b>K • M</b><br>5º aniversario</div>
-          <div style="text-align:right;">2021 — ∞</div>
-        </div>
-
-        <div class="sealWrap">
-          <div class="sectionTitle">Carta</div>
-
+        <div class="pad">
           <div class="envelope">
             <div class="envTop">
               <b>Para mi Gotito</b>
               <h2>Con amor, para siempre.</h2>
             </div>
 
-            <div class="seal" id="seal" onclick="openLetter()" aria-label="Abrir carta">
-              <svg class="mono" viewBox="0 0 64 64" aria-hidden="true">
-                <text x="50%" y="56%" text-anchor="middle" class="engrave">KM</text>
+            <div class="seal" onclick="openLetter()">
+              <svg class="mono" viewBox="0 0 64 64">
+                <text x="50%" y="56%" text-anchor="middle">KM</text>
               </svg>
             </div>
 
             <div class="letter" id="letter">
-              <div class="divider"></div>
-
               <p>
                 Hoy celebramos 5 años, y todavía me sorprende lo bonito que es la vida cuando estoy contigo.
-                Gracias por ser mi calma, mi impulso y mi lugar seguro.
+                Gracias por ser mi calma y mi lugar seguro.
               </p>
-
               <p>
-                Amo tu forma de ser y cómo conviertes lo cotidiano en algo especial.
-                Contigo entendí que el amor verdadero no se presume:
-                <strong>se cuida en silencio, se elige todos los días y se construye con detalles</strong>.
+                Contigo aprendí que el amor no se presume:
+                <strong>se elige todos los días</strong>.
               </p>
-
               <p>
-                Si pudiera pedir un deseo, sería repetir estos cinco años… pero contigo otra vez,
-                y después muchos más. <strong>Te elijo hoy, mañana y siempre.</strong>
+                Te elijo hoy, mañana y siempre.
               </p>
-
-              <div class="divider"></div>
 
               <div class="sig">
-                Feliz 5º aniversario, mi amor.<br>
                 Marelito
-                <small>— para mi Gotito ❤️</small>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- Right -->
-      <aside class="card">
-        <div class="pad">
-          <div class="sectionTitle">Momentos</div>
-
-          <div class="list">
-            <div class="item">
-              <b>El día que empezó todo</b>
-              <span>Ese 14 de febrero que cambió nuestras vidas.</span>
-            </div>
-            <div class="item">
-              <b>Nuestro recuerdo favorito</b>
-              <span>Una tarde sencilla… pero perfecta, contigo.</span>
-            </div>
-            <div class="item">
-              <b>Hoy</b>
-              <span>Cinco años caminando juntos, y yo sigo eligiéndote igual.</span>
-            </div>
-          </div>
-
-          <div class="quote">
-            <p>
-              “Lo más valioso no es que todo salga perfecto…<br>
-              es que contigo, incluso lo difícil se vuelve más ligero.”
-            </p>
-            <b>— KM</b>
-          </div>
-        </div>
-      </aside>
     </div>
   </div>
 
   <script>
-    // Fecha visible
-    const now = new Date();
-    document.getElementById("today").textContent =
-      now.toLocaleDateString("es-ES", { weekday:"long", day:"numeric", month:"long", year:"numeric" });
+    const now=new Date();
+    document.getElementById("today").textContent=
+      now.toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
 
-    // Días desde 2021-02-14
-    const startDate = new Date("2021-02-14");
-    const days = Math.max(0, Math.floor((now - startDate) / (1000*60*60*24)));
-    document.getElementById("daysTogether").textContent = days.toLocaleString("es-ES");
+    const img=document.getElementById("photo");
+    img.onerror=()=>img.classList.add("hidden");
 
-    // Si la foto no carga, no mostramos “huecos” ni mensajes
-    const img = document.getElementById("photo");
-    img.onerror = () => { img.classList.add("hidden"); };
-
-    // Abrir carta
     function openLetter(){
-      const letter = document.getElementById("letter");
-      const seal = document.getElementById("seal");
-      letter.classList.add("show");
-      seal.style.opacity = ".30";
-      seal.style.pointerEvents = "none";
-      letter.scrollIntoView({behavior:"smooth", block:"start"});
+      const l=document.getElementById("letter");
+      l.classList.add("show");
+      l.scrollIntoView({behavior:"smooth"});
     }
-
-    // Copiar link
-    async function copyLink(){
-      try{
-        await navigator.clipboard.writeText(window.location.href);
-        alert("Listo ✅ Link copiado");
-      }catch(e){
-        alert("No pude copiar automático. Copia el link desde la barra del navegador.");
-      }
-    }
-  </script>
-</body>
-</html>    @keyframes drift{
-      from{transform: translateY(140px); opacity:0}
-      12%{opacity:1}
-      to{transform: translateY(-900px); opacity:0}
-    }
-
-    .wrap{
-      width:min(980px, 92vw);
-      margin:0 auto;
-      padding: 20px 0 50px;
-      position:relative;
-      z-index:1;
-    }
-
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:14px;
-      flex-wrap:wrap;
-      padding: 16px 12px 0;
-    }
-    .title{
-      margin:0;
-      font-size: clamp(30px, 4.6vw, 54px);
-      line-height:1.05;
-      letter-spacing:-.6px;
-    }
-    .title span{
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-    .subtitle{
-      margin:10px 0 0;
-      color:var(--muted);
-      font-size:14px;
-      text-transform: capitalize;
-    }
-
-    .actions{display:flex; gap:10px; flex-wrap:wrap}
-    button{
-      border:0;
-      padding:10px 14px;
-      border-radius:14px;
-      font-weight:900;
-      cursor:pointer;
-      user-select:none;
-      touch-action: manipulation;
-      box-shadow: 0 14px 34px rgba(0,0,0,.08);
-      transition: transform .12s ease, opacity .12s ease;
-    }
-    button:active{transform: translateY(1px)}
-    .btn-primary{background: linear-gradient(90deg, var(--accent), var(--accent2)); color:#fff}
-    .btn-ghost{background:#fff; color:var(--text); border:1px solid rgba(0,0,0,.07)}
-    .pill{
-      display:inline-flex; gap:10px; align-items:center;
-      background:#fff;
-      border:1px solid rgba(0,0,0,.06);
-      padding:10px 12px;
-      border-radius:999px;
-      box-shadow: 0 14px 34px rgba(0,0,0,.06);
-      font-weight:900;
-    }
-    .pill small{font-weight:800; color:var(--muted)}
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:16px;
-      margin-top:16px;
-      padding: 0 12px;
-    }
-    @media (max-width: 860px){
-      .grid{grid-template-columns:1fr}
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid rgba(0,0,0,.06);
-      border-radius:24px;
-      box-shadow: 0 22px 70px var(--shadow);
-      overflow:hidden;
-      backdrop-filter: blur(10px);
-    }
-    .pad{padding:22px}
-    h2{margin:0 0 8px; font-size:22px; letter-spacing:-.2px}
-    .muted{color:var(--muted)}
-    .divider{height:1px; background:var(--line); margin:16px 0}
-
-    /* Foto (sin overlays absolutos para evitar bugs en móvil) */
-    .photo{
-      width:100%;
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      display:block;
-      border-bottom:1px solid rgba(0,0,0,.06);
-      background: linear-gradient(120deg, rgba(225,29,72,.10), rgba(124,58,237,.10));
-    }
-    .photoCaption{
-      padding:12px 22px;
-      background: rgba(255,255,255,.9);
-      border-bottom:1px solid rgba(0,0,0,.06);
-      font-weight:900;
-    }
-    .photoCaption span{
-      display:block;
-      font-weight:800;
-      font-size:13px;
-      color:var(--muted);
-      margin-top:2px;
-    }
-
-    /* Carta */
-    .letter p{
-      margin:0 0 14px;
-      font-size:17px;
-      line-height:1.85;
-      opacity:0;
-      transform: translateY(10px);
-      transition: opacity .55s ease, transform .55s ease;
-    }
-    .letter p.on{opacity:1; transform: translateY(0)}
-    .signature{
-      margin-top:14px;
-      font-weight:1000;
-      font-size:17px;
-      opacity:0;
-      transform: translateY(10px);
-      transition: opacity .55s ease, transform .55s ease;
-    }
-    .signature.on{opacity:1; transform: translateY(0)}
-
-    /* Panel derecho */
-    .timeline{display:grid; gap:12px; margin-top:10px}
-    .event{display:grid; grid-template-columns: 28px 1fr; gap:12px; align-items:flex-start}
-    .dot{
-      width:12px;height:12px;border-radius:999px;
-      background: linear-gradient(180deg, var(--accent), var(--accent2));
-      margin-top:5px;
-      box-shadow: 0 10px 24px rgba(225,29,72,.25);
-    }
-    .event b{display:block}
-    .event span{color:var(--muted); font-size:13px}
-
-    .reasons{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-      margin-top:12px;
-    }
-    @media (max-width: 520px){ .reasons{grid-template-columns:1fr} }
-    .chip{
-      background:#fff;
-      border:1px solid rgba(0,0,0,.06);
-      border-radius:18px;
-      padding:12px 12px;
-      box-shadow: 0 14px 34px rgba(0,0,0,.06);
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-    }
-    .chip i{
-      font-style:normal;
-      width:30px;height:30px;border-radius:12px;
-      display:grid;place-items:center;
-      background: linear-gradient(120deg, rgba(225,29,72,.14), rgba(124,58,237,.14));
-      border:1px solid rgba(0,0,0,.05);
-      flex:0 0 auto;
-    }
-    .chip b{display:block; font-size:14px}
-    .chip span{display:block; font-size:13px; color:var(--muted); margin-top:1px}
-
-    .qbox{
-      margin-top:14px;
-      background:#fff;
-      border:1px solid rgba(0,0,0,.06);
-      border-radius:20px;
-      padding:14px;
-      box-shadow: 0 16px 44px rgba(0,0,0,.08);
-      position:relative;
-      overflow:hidden;
-    }
-    .qrow{position:relative; height:78px; margin-top:10px}
-    .yes{
-      position:absolute;
-      left:50%;
-      transform: translateX(-120%);
-      top:10px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      color:#fff;
-    }
-    .no{
-      position:absolute;
-      left:50%;
-      transform: translateX(20%);
-      top:10px;
-      background:#f1f5f9;
-      transition: left .12s ease, top .12s ease;
-    }
-    .result{margin-top:10px; font-weight:1000; color:var(--accent)}
-
-    /* Modal compartir */
-    .modal{
-      position:fixed; inset:0;
-      display:none; place-items:center;
-      background: rgba(17,24,39,.46);
-      z-index:10;
-      padding:16px;
-    }
-    .modal.show{display:grid}
-    .modalCard{
-      width:min(760px, 94vw);
-      background:#fff;
-      border-radius:24px;
-      overflow:hidden;
-      box-shadow: 0 30px 100px rgba(0,0,0,.30);
-    }
-    .modalHead{
-      padding:14px 16px;
-      display:flex; justify-content:space-between; align-items:center; gap:10px;
-      border-bottom:1px solid rgba(0,0,0,.08);
-      background: linear-gradient(90deg, rgba(225,29,72,.08), rgba(124,58,237,.08));
-      font-weight:1000;
-    }
-    .modalBody{padding:16px}
-    code{
-      display:block; white-space:pre-wrap;
-      background:#0b1220; color:#e5e7eb;
-      border-radius:16px; padding:12px;
-      font-size:13px; line-height:1.55;
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none !important; transition:none !important}
-      .particle{display:none}
-    }
-  </style>
-</head>
-<body>
-  <div id="particles"></div>
-
-  <div class="wrap">
-    <header>
-      <div>
-        <h1 class="title"><span>5 años</span> contigo, Gotito ❤️</h1>
-        <p class="subtitle" id="today"></p>
-      </div>
-      <div class="actions">
-        <div class="pill" title="Contador desde 2021-02-14">
-          ❤️ <span id="daysTogether">—</span> <small>días</small>
-        </div>
-        <button class="btn-ghost" id="musicBtn" onclick="toggleMusic()">🎵 Música: Apagada</button>
-        <button class="btn-primary" onclick="openShare()">🔗 Compartir</button>
-      </div>
-    </header>
-
-    <div class="grid">
-      <!-- IZQUIERDA: Foto + Carta -->
-      <section class="card">
-        <img class="photo" src="photo.jpg" alt="Nuestra foto"
-             onerror="this.style.display='none';document.getElementById('photoHelp').style.display='block';" />
-        <div class="photoCaption" id="photoCaption">
-          Nuestra foto favorita
-          
-        </div>
-
-        <div class="pad">
-          <div id="photoHelp" style="display:none; padding:10px 12px; border:1px dashed rgba(0,0,0,.18); border-radius:16px; background:rgba(0,0,0,.02); margin-bottom:14px;">
-            <b>Falta la foto 😄</b>
-            <div class="muted" style="font-size:13px; margin-top:4px;">
-              Sube tu imagen en el repo y nómbrala <b>photo.jpg</b>.
-            </div>
-          </div>
-
-          <h2>Mi Gotito</h2>
-          <div class="muted" style="font-size:13px; margin-bottom:12px;">De Marelito, con todo mi amor.</div>
-
-          <div class="letter">
-            <p id="p1">
-              Hoy celebramos 5 años… y todavía me sorprende lo bonito que es caminar contigo.
-              Gracias por ser mi paz, mi risa y mi hogar en los días buenos y en los difíciles.
-            </p>
-            <p id="p2">
-              Amo tu forma de ser, tu manera de mirar el mundo y cómo, sin darte cuenta,
-              haces que todo se sienta más posible. Contigo aprendí que el amor no solo se dice:
-              se cuida, se elige y se construye.
-            </p>
-            <p id="p3">
-              Si pudiera pedir un deseo, sería repetir estos cinco años… pero contigo otra vez,
-              y después muchos más. <strong>Te elijo hoy, mañana y siempre.</strong>
-            </p>
-
-            <div class="divider"></div>
-
-            <div class="signature" id="sig">
-              Feliz 5º aniversario, mi amor.<br>
-              Marelito ❤️
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- DERECHA: Camino + Razones + Pregunta -->
-      <aside class="card">
-        <div class="pad">
-          <h2>Nuestro camino</h2>
-          <div class="muted" style="font-size:13px;">
-</div>
-
-          <div class="timeline">
-            <div class="event"><div class="dot"></div><div><b>El día que empezó todo</b><span>Ese 14 de febrero que cambió nuestras vidas.</span></div></div>
-            <div class="event"><div class="dot"></div><div><b>Nuestro recuerdo favorito</b><span>Una tarde sencilla, pero perfecta, contigo.</span></div></div>
-            <div class="event"><div class="dot"></div><div><b>Hoy: 5 años</b><span>Cinco años caminando juntos y muchos más por venir.</span></div></div>
-          </div>
-
-          <div class="divider"></div>
-
-          <h2>5 razones (y me faltan miles)</h2>
-          <div class="reasons">
-            <div class="chip"><i>✨</i><div><b>Tu luz</b><span>Iluminas incluso mis días grises.</span></div></div>
-            <div class="chip"><i>💗</i><div><b>Tu amor</b><span>Me haces sentir en casa.</span></div></div>
-            <div class="chip"><i>😂</i><div><b>Tu risa</b><span>Mi sonido favorito.</span></div></div>
-            <div class="chip"><i>🤍</i><div><b>Tu forma</b><span>Tan tú, tan perfecta.</span></div></div>
-            <div class="chip"><i>🫶</i><div><b>Tu apoyo</b><span>Siempre estás, de verdad.</span></div></div>
-            <div class="chip"><i>🌙</i><div><b>Tu calma</b><span>Me das paz sin decir nada.</span></div></div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="qbox" id="qbox">
-            <b>¿Renovamos el “para siempre” por otro año? 💍</b>
-            <div class="muted" style="font-size:13px; margin-top:4px;">Intenta tocar “No” 😄</div>
-            <div class="qrow" id="btnArea">
-              <button class="yes" onclick="answer(true)">Sí 💖</button>
-              <button class="no" id="noBtn" onclick="answer(false)">No 🙈</button>
-            </div>
-            <div class="result" id="result"></div>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </div>
-
-  <!-- Modal compartir -->
-  <div class="modal" id="modal">
-    <div class="modalCard">
-      <div class="modalHead">
-        Mensaje para enviarle a Gotito
-        <button class="btn-ghost" onclick="closeShare()">Cerrar</button>
-      </div>
-      <div class="modalBody">
-        <div class="muted" style="font-size:13px; margin-bottom:10px;">
-          Toca “Copiar”. Si tu navegador no deja, copia manualmente.
-        </div>
-        <code id="shareText"></code>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
-          <button class="btn-primary" onclick="copyShare()">Copiar</button>
-          <button class="btn-ghost" onclick="closeShare()">Listo</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Fecha visible
-    const now = new Date();
-    document.getElementById("today").textContent =
-      now.toLocaleDateString("es-ES", { weekday:"long", day:"numeric", month:"long", year:"numeric" });
-
-    // Contador exacto desde 2021-02-14
-    const startDate = new Date("2021-02-14");
-    const days = Math.max(0, Math.floor((now - startDate) / (1000*60*60*24)));
-    document.getElementById("daysTogether").textContent = days.toLocaleString("es-ES");
-
-    // Animación de aparición de la carta (sin afectar layout)
-    ["p1","p2","p3","sig"].forEach((id, i) => {
-      setTimeout(() => document.getElementById(id).classList.add("on"), 260 + i*520);
-    });
-
-    // Partículas
-    const holder = document.getElementById("particles");
-    for(let i=0;i<24;i++){
-      const p=document.createElement("div");
-      p.className="particle";
-      p.style.left = (Math.random()*100) + "vw";
-      p.style.bottom = (-50 - Math.random()*240) + "px";
-      p.style.animationDelay = (Math.random()*10) + "s";
-      p.style.animationDuration = (9 + Math.random()*10) + "s";
-      const s = 6 + Math.random()*10;
-      p.style.width = s + "px";
-      p.style.height = s + "px";
-      p.style.background = (Math.random() > 0.5)
-        ? "rgba(225,29,72,.12)"
-        : "rgba(124,58,237,.12)";
-      holder.appendChild(p);
-    }
-
-    // Botón NO que se mueve
-    const noBtn = document.getElementById("noBtn");
-    const area = document.getElementById("btnArea");
-    function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
-    function moveNo(initial=false){
-      const rect = area.getBoundingClientRect();
-      const bw = noBtn.offsetWidth || 90;
-      const bh = noBtn.offsetHeight || 40;
-      const pad = 6;
-      const maxX = rect.width - bw - pad;
-      const maxY = rect.height - bh - pad;
-      const x = clamp(Math.random() * maxX, pad, maxX);
-      const y = clamp(Math.random() * maxY, pad, maxY);
-      noBtn.style.left = x + "px";
-      noBtn.style.top  = y + "px";
-      if(initial) noBtn.style.transform = "none";
-    }
-    setTimeout(()=>moveNo(true), 350);
-    noBtn.addEventListener("mouseenter", () => moveNo());
-    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); }, {passive:false});
-    area.addEventListener("touchstart", (e) => {
-      const t = e.touches[0];
-      const r = noBtn.getBoundingClientRect();
-      const dx = Math.abs(t.clientX - (r.left + r.width/2));
-      const dy = Math.abs(t.clientY - (r.top + r.height/2));
-      if(dx < 70 && dy < 55) moveNo();
-    }, {passive:true});
-
-    // Respuesta
-    function answer(ok){
-      const r=document.getElementById("result");
-      if(ok){
-        r.textContent="Siempre supe que era un SÍ 😍💘";
-        confettiHearts();
-      }else{
-        r.textContent="Esa opción no cuenta… inténtalo otra vez 😘";
-        moveNo();
-      }
-    }
-    function confettiHearts(){
-      const box = document.getElementById("qbox");
-      for(let i=0;i<14;i++){
-        const s=document.createElement("div");
-        s.textContent = (i%3===0)?"💗":(i%3===1?"❤️":"💞");
-        s.style.position="absolute";
-        s.style.left = (20 + Math.random()*60) + "%";
-        s.style.top = "18px";
-        s.style.fontSize = (14 + Math.random()*10) + "px";
-        s.style.opacity="0";
-        s.style.transition="transform 900ms ease, opacity 900ms ease";
-        box.appendChild(s);
-        requestAnimationFrame(()=>{
-          s.style.opacity="1";
-          s.style.transform = `translate(${(-40 + Math.random()*80)}px, ${(-70 - Math.random()*60)}px) rotate(${(-25 + Math.random()*50)}deg)`;
-          s.style.opacity="0";
-        });
-        setTimeout(()=>s.remove(), 950);
-      }
-    }
-
-    // Compartir
-    const modal = document.getElementById("modal");
-    const shareText = document.getElementById("shareText");
-    function openShare(){
-      const url = window.location.href;
-      shareText.textContent = `Gotito ❤️\n\nTe hice una sorpresa por nuestro 5º aniversario:\n${url}\n\nTe amo, Marelito 💌`;
-      modal.classList.add("show");
-    }
-    function closeShare(){ modal.classList.remove("show"); }
-    async function copyShare(){
-      try{ await navigator.clipboard.writeText(shareText.textContent); alert("Listo ✅ Copiado"); }
-      catch(e){ alert("No pude copiar automático. Copia el texto manualmente 💗"); }
-    }
-
-    // Música suave (sin archivos)
-    let audioCtx, masterGain, playing=false, intervalId=null;
-    const musicBtn = document.getElementById("musicBtn");
-    function setupAudio(){
-      if(audioCtx) return;
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      masterGain = audioCtx.createGain();
-      masterGain.gain.value = 0.0;
-      masterGain.connect(audioCtx.destination);
-    }
-    function playNote(freq, t, duration){
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      const filter = audioCtx.createBiquadFilter();
-      osc.type="sine";
-      osc.frequency.setValueAtTime(freq, t);
-      filter.type="lowpass";
-      filter.frequency.setValueAtTime(1200, t);
-      gain.gain.setValueAtTime(0.0001, t);
-      gain.gain.exponentialRampToValueAtTime(0.12, t + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + duration);
-      osc.connect(filter); filter.connect(gain); gain.connect(masterGain);
-      osc.start(t); osc.stop(t + duration + 0.02);
-    }
-    function startMusic(){
-      setupAudio();
-      if(audioCtx.state === "suspended") audioCtx.resume();
-      const melody = [392,440,523.25,440,349.23,392,493.88,392,329.63,392,440,392,349.23,392,523.25,493.88];
-      let step=0;
-      const nowT = audioCtx.currentTime;
-      masterGain.gain.cancelScheduledValues(nowT);
-      masterGain.gain.setValueAtTime(masterGain.gain.value, nowT);
-      masterGain.gain.linearRampToValueAtTime(0.35, nowT + 0.8);
-      const tempo=92, beat=60/tempo, noteDur=beat*0.85;
-      intervalId = setInterval(()=>{
-        const t=audioCtx.currentTime + 0.02;
-        const f=melody[step % melody.length];
-        playNote(f, t, noteDur);
-        if(step%2===0) playNote(f/2, t, noteDur*0.95);
-        step++;
-      }, beat*1000);
-      playing=true;
-      musicBtn.textContent="🎵 Música: Encendida";
-    }
-    function stopMusic(){
-      if(!audioCtx) return;
-      const nowT = audioCtx.currentTime;
-      masterGain.gain.cancelScheduledValues(nowT);
-      masterGain.gain.setValueAtTime(masterGain.gain.value, nowT);
-      masterGain.gain.linearRampToValueAtTime(0.0, nowT + 0.35);
-      if(intervalId){clearInterval(intervalId); intervalId=null;}
-      playing=false;
-      musicBtn.textContent="🎵 Música: Apagada";
-    }
-    function toggleMusic(){ if(!playing) startMusic(); else stopMusic(); }
   </script>
 </body>
 </html>
