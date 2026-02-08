@@ -3,159 +3,615 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>5 años — KM</title>
+  <title>5 años — Gotito & Marelito</title>
+  <meta name="description" content="Un detalle elegante por nuestro 5º aniversario." />
 
   <style>
     :root{
-      --bg0:#070a0f;
-      --bg1:#0b1018;
-      --card:#0e1520cc;
-      --line:rgba(255,255,255,.10);
-      --text:#e9edf5;
-      --muted:#a8b2c2;
-      --silver:#c7d0de;
-      --silver2:#eef2f7;
+      /* Premium palette: Purple + Gold */
+      --bg0:#070611;
+      --bg1:#0b0718;
+      --glass: rgba(15, 12, 28, .62);
+      --card: rgba(18, 14, 34, .72);
+      --line: rgba(255,255,255,.10);
+
+      --text:#f1f0fb;
+      --muted:#b9b3d6;
+
+      --purple:#7c3aed;
+      --purple2:#a855f7;
+
+      --gold:#d6b46a;
+      --gold2:#f1d48e;
+
       --shadow: rgba(0,0,0,.60);
     }
 
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
       color:var(--text);
       background:
-        radial-gradient(1100px 650px at 18% 12%, rgba(199,208,222,.10), transparent 58%),
-        radial-gradient(900px 600px at 88% 18%, rgba(238,242,247,.07), transparent 62%),
+        radial-gradient(1200px 700px at 18% 10%, rgba(124,58,237,.18), transparent 58%),
+        radial-gradient(900px 600px at 86% 18%, rgba(214,180,106,.12), transparent 62%),
+        radial-gradient(900px 700px at 50% 110%, rgba(255,255,255,.06), transparent 65%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      overflow-x:hidden;
     }
 
-    .wrap{width:min(980px,92vw);margin:0 auto;padding:28px 0 60px}
-    header{padding:14px 10px 0}
-    h1{margin:0;font-size:clamp(30px,4.2vw,52px)}
-    h1 span{color:var(--silver2)}
-    .sub{color:var(--muted);font-family:system-ui;font-size:14px}
+    /* soft grain (subtle, premium print) */
+    .grain{
+      pointer-events:none;
+      position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+      opacity:.055;
+      mix-blend-mode: overlay;
+      z-index:0;
+    }
 
-    .grid{margin-top:18px;padding:0 10px;display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
-    @media(max-width:880px){.grid{grid-template-columns:1fr}}
+    .wrap{
+      width:min(1040px, 92vw);
+      margin:0 auto;
+      padding: 26px 0 64px;
+      position:relative;
+      z-index:1;
+    }
+
+    header{
+      padding: 14px 10px 0;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:12px;
+      color: rgba(241,240,251,.75);
+    }
+    .kicker::before{
+      content:"";
+      width:34px;height:1px;
+      background: linear-gradient(90deg, rgba(214,180,106,.95), rgba(124,58,237,.55), transparent);
+      opacity:.95;
+    }
+
+    h1{
+      margin:0;
+      font-weight:750;
+      letter-spacing:-.02em;
+      font-size: clamp(30px, 4.2vw, 54px);
+      line-height:1.05;
+    }
+    h1 .accent{
+      background: linear-gradient(90deg, var(--gold2), var(--purple2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .sub{
+      margin:8px 0 0;
+      color: rgba(241,240,251,.72);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-size:14px;
+      line-height:1.6;
+      text-transform: capitalize;
+    }
+
+    .meta{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+
+    .pill{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 55px var(--shadow);
+      display:inline-flex; gap:10px; align-items:center;
+      font-weight:750;
+      font-size:13px;
+      color:var(--text);
+    }
+    .pill small{ color: rgba(241,240,251,.72); font-weight:750; }
+
+    .btn{
+      border:1px solid rgba(214,180,106,.32);
+      background: linear-gradient(180deg, rgba(214,180,106,.14), rgba(124,58,237,.10));
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:14px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow: 0 18px 55px var(--shadow);
+      transition: transform .12s ease, opacity .12s ease;
+      user-select:none;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .grid{
+      margin-top:18px;
+      padding: 0 10px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+    }
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+    }
 
     .card{
-      border:1px solid var(--line);
-      background:var(--card);
-      border-radius:26px;
+      border:1px solid rgba(255,255,255,.10);
+      background: var(--card);
+      border-radius: 26px;
       overflow:hidden;
       backdrop-filter: blur(14px);
-      box-shadow:0 28px 90px var(--shadow);
+      box-shadow: 0 30px 95px var(--shadow);
     }
 
-    .photo{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
-    .photo.hidden{display:none}
+    /* Photo */
+    .photo{
+      width:100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display:block;
+      filter: saturate(.98) contrast(1.02);
+    }
+    .photo.hidden{ display:none; }
 
-    .pad{padding:22px}
+    .photoBar{
+      padding: 14px 18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color: rgba(241,240,251,.70);
+      font-size:13px;
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+    }
+    .photoBar b{ color: rgba(241,240,251,.94); font-weight:850; }
 
-    .envelope{
-      width:min(520px,100%);
-      margin:0 auto;
+    .pad{ padding: 22px; }
+
+    .sectionTitle{
+      margin:0 0 10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      text-transform: uppercase;
+      font-weight:900;
+      letter-spacing:.16em;
+      font-size:11px;
+      color: rgba(241,240,251,.86);
+    }
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, rgba(214,180,106,.38), rgba(168,85,247,.22), rgba(255,255,255,.06), transparent);
+      margin: 16px 0;
+    }
+
+    /* Envelope / Teaser card (bigger + elegant) */
+    .teaser{
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.10);
       border-radius:22px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-      box-shadow:0 28px 80px rgba(0,0,0,.55);
+      padding: 18px 18px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.55);
       position:relative;
       overflow:hidden;
     }
+    .teaser::before{
+      content:"";
+      position:absolute; inset:-120px -120px auto auto;
+      width:260px;height:260px;
+      background: radial-gradient(circle at 30% 30%, rgba(214,180,106,.25), transparent 60%);
+      filter: blur(1px);
+      opacity:.8;
+      pointer-events:none;
+    }
+    .teaserTop b{
+      display:block;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:12px;
+      color: rgba(241,240,251,.62);
+    }
+    .teaserTop h2{
+      margin:10px 0 0;
+      font-size:28px;
+      letter-spacing:-.02em;
+      font-weight:750;
+    }
 
-    .envTop{padding:18px 18px 56px;border-bottom:1px solid var(--line)}
-    .envTop b{font-family:system-ui;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--muted)}
-    .envTop h2{margin:10px 0 0;font-size:26px}
-
-    /* SELLO PLATA GRABADO */
+    /* Relief coin seal (KM) */
+    .sealRow{
+      display:flex;
+      justify-content:center;
+      margin-top:14px;
+      padding-bottom:6px;
+    }
     .seal{
-      width:82px;height:82px;border-radius:999px;
-      position:absolute;left:50%;bottom:-41px;transform:translateX(-50%);
-      background:
-        radial-gradient(circle at 28% 26%, rgba(255,255,255,.30), transparent 42%),
-        radial-gradient(circle at 70% 82%, rgba(0,0,0,.24), transparent 48%),
-        linear-gradient(180deg, rgba(238,242,247,.92), rgba(148,163,184,.58));
+      width:92px;height:92px;border-radius:999px;
       border:1px solid rgba(0,0,0,.30);
-      box-shadow:0 26px 78px rgba(0,0,0,.62);
-      display:grid;place-items:center;cursor:pointer;
+      cursor:pointer;
+      user-select:none;
+      position:relative;
+      isolation:isolate;
+
+      background:
+        radial-gradient(circle at 26% 22%, rgba(255,255,255,.40), transparent 42%),
+        radial-gradient(circle at 70% 86%, rgba(0,0,0,.30), transparent 48%),
+        radial-gradient(circle at 50% 50%, rgba(214,180,106,.18), rgba(168,85,247,.10)),
+        linear-gradient(180deg, rgba(241,212,142,.95), rgba(214,180,106,.72));
+      box-shadow:
+        0 26px 84px rgba(0,0,0,.65),
+        inset 0 14px 18px rgba(255,255,255,.14),
+        inset 0 -18px 24px rgba(0,0,0,.28);
+      transition: transform .14s ease, filter .14s ease, opacity .20s ease;
+    }
+    .seal:active{ transform: scale(.985); }
+
+    /* Coin rim (like a luxury medal) */
+    .seal::before{
+      content:"";
+      position:absolute; inset:8px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.20);
+      box-shadow:
+        inset 0 0 0 1px rgba(0,0,0,.16),
+        inset 0 10px 14px rgba(255,255,255,.08),
+        inset 0 -12px 18px rgba(0,0,0,.18);
+      opacity:.95;
+      pointer-events:none;
     }
     .seal::after{
-      content:"";position:absolute;inset:0;border-radius:999px;
-      box-shadow:inset 0 10px 18px rgba(255,255,255,.10),
-                 inset 0 -14px 20px rgba(0,0,0,.28);
-    }
-    .mono text{
-      font-family:system-ui;font-weight:900;letter-spacing:2px;font-size:30px;
-      fill:rgba(8,12,18,.82);
-      filter:drop-shadow(0 1px 0 rgba(255,255,255,.28))
-             drop-shadow(0 -1px 0 rgba(0,0,0,.38));
+      /* knurling texture hint */
+      content:"";
+      position:absolute; inset:0;
+      border-radius:999px;
+      background:
+        repeating-conic-gradient(from 0deg,
+          rgba(255,255,255,.06) 0 6deg,
+          rgba(0,0,0,.06) 6deg 12deg);
+      mix-blend-mode: soft-light;
+      opacity:.18;
+      pointer-events:none;
     }
 
-    .letter{display:none;padding:22px}
-    .letter.show{display:block}
-    .letter p{font-size:18px;line-height:1.9}
-    .sig{margin-top:14px;font-family:system-ui;font-weight:900}
+    .mono{
+      width:56px;height:56px;
+      position:absolute;
+      left:50%; top:50%;
+      transform: translate(-50%,-50%);
+      z-index:2;
+      opacity:.98;
+    }
+    .mono text{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-weight:1000;
+      letter-spacing: 2px;
+      font-size: 32px;
+
+      /* engraved relief */
+      fill: rgba(10, 8, 18, .86);
+      filter:
+        drop-shadow(0 1px 0 rgba(255,255,255,.26))
+        drop-shadow(0 -1px 0 rgba(0,0,0,.50))
+        drop-shadow(0 2px 6px rgba(0,0,0,.25));
+    }
+
+    /* Right column: moments */
+    .list{
+      display:grid;
+      gap:12px;
+      margin-top: 10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+    .item{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: 18px;
+      padding: 14px 14px;
+    }
+    .item b{
+      display:block;
+      color: rgba(241,240,251,.95);
+      font-weight:900;
+      margin-bottom:4px;
+    }
+    .item span{
+      color: rgba(241,240,251,.70);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .quote{
+      margin-top:14px;
+      border:1px solid rgba(214,180,106,.22);
+      background: linear-gradient(180deg, rgba(214,180,106,.08), rgba(168,85,247,.06));
+      border-radius: 20px;
+      padding: 16px 16px;
+    }
+    .quote p{
+      margin:0;
+      font-size:14px;
+      line-height:1.85;
+      color: rgba(241,240,251,.90);
+    }
+    .quote b{
+      display:block;
+      margin-top:10px;
+      color: rgba(241,212,142,.92);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:11px;
+      font-weight:950;
+    }
+
+    /* FULLSCREEN LETTER (fix: content too small) */
+    .overlay{
+      position:fixed; inset:0;
+      display:none;
+      background: rgba(5,4,10,.72);
+      backdrop-filter: blur(10px);
+      z-index:50;
+      padding: 16px;
+    }
+    .overlay.show{ display:grid; place-items:center; }
+
+    .letterModal{
+      width:min(860px, 94vw);
+      max-height: min(86vh, 820px);
+      overflow:auto;
+      border-radius: 26px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(900px 360px at 20% 0%, rgba(214,180,106,.12), transparent 60%),
+        radial-gradient(900px 360px at 90% 10%, rgba(168,85,247,.12), transparent 62%),
+        linear-gradient(180deg, rgba(18,14,34,.92), rgba(12,10,22,.92));
+      box-shadow: 0 40px 120px rgba(0,0,0,.75);
+    }
+
+    .letterHead{
+      position:sticky; top:0;
+      padding: 14px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      background: rgba(12,10,22,.70);
+      backdrop-filter: blur(10px);
+    }
+    .letterHead b{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:12px;
+      color: rgba(241,240,251,.82);
+    }
+    .closeBtn{
+      border:1px solid rgba(214,180,106,.30);
+      background: rgba(255,255,255,.04);
+      color: rgba(241,240,251,.92);
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .letterBody{
+      padding: 18px 18px 22px;
+    }
+
+    .letterTitle{
+      margin: 2px 0 12px;
+      font-size: 32px;
+      line-height:1.15;
+      letter-spacing:-.02em;
+    }
+    .letterTitle span{
+      background: linear-gradient(90deg, var(--gold2), var(--purple2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .letterBody p{
+      margin: 0 0 14px;
+      font-size: 18px;
+      line-height: 1.95;
+      color: rgba(241,240,251,.92);
+    }
+    .letterBody p strong{ color: rgba(241,212,142,.95); }
+
+    .sig{
+      margin-top: 14px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-weight:1000;
+      letter-spacing:.02em;
+      color: rgba(241,240,251,.95);
+    }
+    .sig small{
+      display:block;
+      margin-top:4px;
+      color: rgba(241,240,251,.70);
+      font-weight:850;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ transition:none !important; animation:none !important; }
+    }
   </style>
 </head>
+
 <body>
+  <div class="grain"></div>
+
   <div class="wrap">
     <header>
-      <h1><span>5 años</span> contigo, Gotito</h1>
-      <p class="sub" id="today"></p>
+      <div>
+        <div class="kicker">Aniversario</div>
+        <h1><span class="accent">5 años</span> contigo, Gotito</h1>
+        <p class="sub" id="today"></p>
+      </div>
+
+      <div class="meta">
+        <div class="pill">KM <span id="daysTogether">—</span> <small>días juntos</small></div>
+        <button class="btn" onclick="copyLink()">Copiar link</button>
+      </div>
     </header>
 
     <div class="grid">
+      <!-- Left: photo + sealed teaser -->
       <section class="card">
         <img id="photo" class="photo" src="photo.jpg" alt="KM" />
 
+        <div class="photoBar">
+          <div><b>K • M</b><br>5º aniversario</div>
+          <div style="text-align:right;">2021 — ∞</div>
+        </div>
+
         <div class="pad">
-          <div class="envelope">
-            <div class="envTop">
+          <div class="sectionTitle">Carta</div>
+
+          <div class="teaser">
+            <div class="teaserTop">
               <b>Para mi Gotito</b>
               <h2>Con amor, para siempre.</h2>
             </div>
 
-            <div class="seal" onclick="openLetter()">
-              <svg class="mono" viewBox="0 0 64 64">
-                <text x="50%" y="56%" text-anchor="middle">KM</text>
-              </svg>
-            </div>
-
-            <div class="letter" id="letter">
-              <p>
-                Hoy celebramos 5 años, y todavía me sorprende lo bonito que es la vida cuando estoy contigo.
-                Gracias por ser mi calma y mi lugar seguro.
-              </p>
-              <p>
-                Contigo aprendí que el amor no se presume:
-                <strong>se elige todos los días</strong>.
-              </p>
-              <p>
-                Te elijo hoy, mañana y siempre.
-              </p>
-
-              <div class="sig">
-                Marelito
+            <div class="sealRow">
+              <div class="seal" role="button" aria-label="Abrir carta" onclick="openLetter()">
+                <svg class="mono" viewBox="0 0 64 64" aria-hidden="true">
+                  <text x="50%" y="56%" text-anchor="middle">KM</text>
+                </svg>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <!-- Right: moments -->
+      <aside class="card">
+        <div class="pad">
+          <div class="sectionTitle">Momentos</div>
+
+          <div class="list">
+            <div class="item">
+              <b>El día que empezó todo</b>
+              <span>Ese 14 de febrero que cambió nuestras vidas.</span>
+            </div>
+            <div class="item">
+              <b>Nuestro recuerdo favorito</b>
+              <span>Una tarde sencilla… pero perfecta, contigo.</span>
+            </div>
+            <div class="item">
+              <b>Hoy</b>
+              <span>Cinco años caminando juntos, y yo sigo eligiéndote igual.</span>
+            </div>
+          </div>
+
+          <div class="quote">
+            <p>
+              “Lo más valioso no es que todo salga perfecto…<br>
+              es que contigo, incluso lo difícil se vuelve más ligero.”
+            </p>
+            <b>— KM</b>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Fullscreen letter modal -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="letterModal" role="dialog" aria-modal="true" aria-label="Carta">
+      <div class="letterHead">
+        <b>Carta</b>
+        <button class="closeBtn" onclick="closeLetter()">Cerrar</button>
+      </div>
+
+      <div class="letterBody">
+        <div class="letterTitle"><span>Gotito</span>,</div>
+
+        <p>
+          Hoy celebramos 5 años, y todavía me sorprende lo bonito que es la vida cuando estoy contigo.
+          Gracias por ser mi calma, mi impulso y mi lugar seguro.
+        </p>
+
+        <p>
+          Amo tu forma de ser y cómo conviertes lo cotidiano en algo especial.
+          Contigo entendí que el amor verdadero no se presume:
+          <strong>se cuida en silencio, se elige todos los días y se construye con detalles</strong>.
+        </p>
+
+        <p>
+          Si pudiera pedir un deseo, sería repetir estos cinco años… pero contigo otra vez,
+          y después muchos más. <strong>Te elijo hoy, mañana y siempre.</strong>
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="sig">
+          Feliz 5º aniversario, mi amor.<br>
+          Marelito
+          <small>— para mi Gotito ❤️</small>
+        </div>
+      </div>
     </div>
   </div>
 
   <script>
-    const now=new Date();
-    document.getElementById("today").textContent=
-      now.toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+    // Fecha visible
+    const now = new Date();
+    const today = now.toLocaleDateString("es-ES", { weekday:"long", day:"numeric", month:"long", year:"numeric" });
+    document.getElementById("today").textContent = today;
 
-    const img=document.getElementById("photo");
-    img.onerror=()=>img.classList.add("hidden");
+    // Días juntos desde 2021-02-14
+    const startDate = new Date("2021-02-14");
+    const days = Math.max(0, Math.floor((now - startDate) / (1000*60*60*24)));
+    document.getElementById("daysTogether").textContent = days.toLocaleString("es-ES");
 
+    // Si la foto no carga, ocultar sin mensajes
+    const img = document.getElementById("photo");
+    img.onerror = () => img.classList.add("hidden");
+
+    // Carta fullscreen
+    const overlay = document.getElementById("overlay");
     function openLetter(){
-      const l=document.getElementById("letter");
-      l.classList.add("show");
-      l.scrollIntoView({behavior:"smooth"});
+      overlay.classList.add("show");
+      overlay.setAttribute("aria-hidden","false");
+    }
+    function closeLetter(){
+      overlay.classList.remove("show");
+      overlay.setAttribute("aria-hidden","true");
+    }
+    overlay.addEventListener("click", (e) => {
+      if(e.target === overlay) closeLetter();
+    });
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") closeLetter();
+    });
+
+    // Copiar link
+    async function copyLink(){
+      try{
+        await navigator.clipboard.writeText(window.location.href);
+        alert("Listo ✅ Link copiado");
+      }catch(e){
+        alert("No pude copiar automático. Copia el link desde la barra del navegador.");
+      }
     }
   </script>
 </body>
