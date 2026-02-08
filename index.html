@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>5 años contigo, Gotito ❤️</title>
+  <meta name="description" content="Una carta web por nuestro 5º aniversario — de Marelito para Gotito." />
+  <style>
+    :root{
+      --bg0:#fff7fb; --bg1:#ffe8f1; --bg2:#f3f4ff;
+      --card:#ffffffd9; --text:#111827; --muted:#6b7280;
+      --accent:#e11d48; --accent2:#7c3aed;
+      --line:rgba(17,24,39,.10); --shadow: rgba(17,24,39,.10);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(900px 500px at 20% 10%, var(--bg1), transparent 60%),
+        radial-gradient(900px 500px at 85% 25%, var(--bg2), transparent 62%),
+        linear-gradient(180deg, var(--bg0), #ffffff);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+    .particle{
+      position:fixed; width:10px;height:10px; border-radius:999px;
+      background: rgba(225,29,72,.12); filter: blur(.2px);
+      pointer-events:none; animation: drift 12s linear infinite; z-index:0;
+    }
+    @keyframes drift{
+      from{transform: translateY(140px); opacity:0}
+      12%{opacity:1}
+      to{transform: translateY(-900px); opacity:0}
+    }
+
+    .wrap{width:min(980px, 92vw); margin:0 auto; padding:22px 0 50px; position:relative; z-index:1}
+    header{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; flex-wrap:wrap; padding:18px 14px 0;
+    }
+    .title{
+      margin:0; font-size: clamp(30px, 4.6vw, 54px);
+      line-height:1.05; letter-spacing:-.6px;
+    }
+    .title span{
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .subtitle{margin:10px 0 0; color:var(--muted); font-size:14px; text-transform: capitalize;}
+
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
+    button{
+      border:0; padding:10px 14px; border-radius:14px;
+      font-weight:800; cursor:pointer;
+      transition: transform .12s ease, opacity .12s ease;
+      box-shadow: 0 14px 34px rgba(0,0,0,.08);
+      user-select:none; touch-action: manipulation;
+    }
+    button:active{transform: translateY(1px)}
+    .btn-primary{background: linear-gradient(90deg, var(--accent), var(--accent2)); color:#fff}
+    .btn-ghost{background:#fff; color:var(--text); border:1px solid rgba(0,0,0,.07)}
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      background:#fff; border:1px solid rgba(0,0,0,.06);
+      padding:10px 12px; border-radius:999px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.06);
+      font-weight:800;
+    }
+    .pill small{font-weight:700; color:var(--muted)}
+
+    .grid{
+      display:grid; grid-template-columns: 1.1fr .9fr;
+      gap:16px; margin-top:16px; padding:0 14px;
+    }
+    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      background:var(--card);
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:24px;
+      box-shadow: 0 22px 70px var(--shadow);
+      overflow:hidden;
+      position:relative;
+      backdrop-filter: blur(10px);
+    }
+    .card .pad{padding:22px}
+    h2{margin:0 0 8px; font-size:22px; letter-spacing:-.2px}
+    .muted{color:var(--muted)}
+
+    .photo{
+      aspect-ratio: 16 / 10;
+      width:100%;
+      object-fit:cover;
+      display:block;
+      border-bottom:1px solid rgba(0,0,0,.06);
+      background: linear-gradient(120deg, rgba(225,29,72,.10), rgba(124,58,237,.10));
+    }
+    .photo-overlay{
+      position:absolute; inset:auto 16px 16px 16px;
+      background: rgba(255,255,255,.82);
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:18px;
+      padding:12px 14px;
+      backdrop-filter: blur(8px);
+    }
+    .photo-overlay b{display:block; font-size:14px}
+    .photo-overlay span{color:var(--muted); font-size:13px}
+
+    .letter p{
+      margin:0 0 14px;
+      font-size:17px; line-height:1.85;
+      opacity:0; transform: translateY(10px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .letter p.on{opacity:1; transform: translateY(0)}
+    .signature{
+      margin-top:14px; font-weight:900; font-size:17px;
+      opacity:0; transform: translateY(10px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .signature.on{opacity:1; transform: translateY(0)}
+    .divider{height:1px; background:var(--line); margin:16px 0}
+
+    .timeline{display:grid; gap:12px; margin-top:10px}
+    .event{display:grid; grid-template-columns: 28px 1fr; gap:12px; align-items:flex-start}
+    .dot{
+      width:12px;height:12px;border-radius:999px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      margin-top:5px; box-shadow: 0 10px 24px rgba(225,29,72,.25);
+    }
+    .event b{display:block}
+    .event span{color:var(--muted); font-size:13px}
+
+    .reasons{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:12px}
+    @media (max-width: 520px){ .reasons{grid-template-columns:1fr} }
+    .chip{
+      background:#fff; border:1px solid rgba(0,0,0,.06);
+      border-radius:18px; padding:12px 12px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.06);
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .chip i{
+      font-style:normal; width:30px;height:30px;border-radius:12px;
+      display:grid;place-items:center;
+      background: linear-gradient(120deg, rgba(225,29,72,.14), rgba(124,58,237,.14));
+      border:1px solid rgba(0,0,0,.05); flex:0 0 auto;
+    }
+    .chip b{display:block; font-size:14px}
+    .chip span{display:block; font-size:13px; color:var(--muted); margin-top:1px}
+
+    .qbox{
+      margin-top:14px; background:#fff;
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:20px; padding:14px;
+      box-shadow: 0 16px 44px rgba(0,0,0,.08);
+      position:relative; overflow:hidden;
+    }
+    .qrow{position:relative; height:78px; margin-top:10px}
+    .yes{
+      position:absolute; left:50%; transform: translateX(-120%); top:10px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2)); color:#fff;
+    }
+    .no{
+      position:absolute; left:50%; transform: translateX(20%); top:10px;
+      background:#f1f5f9;
+      transition: left .12s ease, top .12s ease;
+    }
+    .result{margin-top:10px; font-weight:900; color:var(--accent)}
+
+    .modal{
+      position:fixed; inset:0; display:none; place-items:center;
+      background: rgba(17,24,39,.46);
+      z-index:5; padding:16px;
+    }
+    .modal.show{display:grid}
+    .modal-card{
+      width:min(760px, 94vw);
+      background:#fff; border-radius:24px; overflow:hidden;
+      box-shadow: 0 30px 100px rgba(0,0,0,.30);
+    }
+    .modal-head{
+      padding:14px 16px;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      border-bottom:1px solid rgba(0,0,0,.08);
+      background: linear-gradient(90deg, rgba(225,29,72,.08), rgba(124,58,237,.08));
+    }
+    .modal-head b{font-size:14px}
+    .modal-body{padding:16px}
+    code{
+      display:block; white-space:pre-wrap;
+      background:#0b1220; color:#e5e7eb;
+      border-radius:16px; padding:12px;
+      font-size:13px; line-height:1.55;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important}
+      .particle{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div id="particles"></div>
+
+  <div class="wrap">
+    <header>
+      <div>
+        <h1 class="title"><span>5 años</span> contigo, Gotito ❤️</h1>
+        <p class="subtitle" id="today"></p>
+      </div>
+
+      <div class="actions">
+        <div class="pill" title="Edita la fecha en el código si quieres que sea exacto">
+          ❤️ <span id="daysTogether">—</span> <small>días</small>
+        </div>
+        <button class="btn-ghost" id="musicBtn" onclick="toggleMusic()">🎵 Música: Apagada</button>
+        <button class="btn-primary" onclick="openShare()">🔗 Compartir</button>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <img class="photo" src="photo.jpg" alt="Nuestra foto"
+             onerror="this.style.display='none';document.getElementById('photoHelp').style.display='block';" />
+        <div class="photo-overlay">
+          <b>Nuestra historia</b>
+          <span>Un recuerdo que quiero llevar conmigo siempre.</span>
+        </div>
+
+        <div class="pad">
+          <div id="photoHelp" style="display:none; padding:10px 12px; border:1px dashed rgba(0,0,0,.18); border-radius:16px; background:rgba(0,0,0,.02); margin-bottom:14px;">
+            <b>Falta la foto 😄</b>
+            <div class="muted" style="font-size:13px; margin-top:4px;">
+              Pon una imagen en la misma carpeta y nómbrala <b>photo.jpg</b> (o cambia el nombre en el código).
+            </div>
+          </div>
+
+          <h2>Mi Gotito</h2>
+          <div class="muted" style="font-size:13px; margin-bottom:12px;">De Marelito, con todo mi amor.</div>
+
+          <div class="letter" id="letter">
+            <p id="p1">
+              Hoy celebramos 5 años… y todavía me sorprende lo bonito que es caminar contigo.
+              Gracias por ser mi paz, mi risa y mi hogar en los días buenos y en los difíciles.
+            </p>
+            <p id="p2">
+              Amo tu forma de ser, tu manera de mirar el mundo y cómo, sin darte cuenta, haces que todo se sienta más posible.
+              Contigo aprendí que el amor no solo se dice: se cuida, se elige y se construye.
+            </p>
+            <p id="p3">
+              Si pudiera pedir un deseo, sería repetir estos cinco años… pero contigo otra vez,
+              y después muchos más. <strong>Te elijo hoy, mañana y siempre.</strong>
+            </p>
+            <div class="divider"></div>
+            <div class="signature" id="sig">
+              Feliz 5º aniversario, mi amor.<br>
+              Marelito ❤️
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <div class="pad">
+          <h2>Nuestro camino</h2>
+          <div class="muted" style="font-size:13px;">Edítalo con sus momentos favoritos ✨</div>
+
+          <div class="timeline">
+            <div class="event"><div class="dot"></div><div><b>El día que empezó todo</b><span>Ese “hola” que cambió mi vida.</span></div></div>
+            <div class="event"><div class="dot"></div><div><b>Un recuerdo que atesoro</b><span>Una risa, un viaje, una tarde… algo solo nuestro.</span></div></div>
+            <div class="event"><div class="dot"></div><div><b>Hoy: 5 años</b><span>Y sigo eligiéndote con el mismo amor.</span></div></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <h2>5 razones (y me faltan miles)</h2>
+          <div class="reasons">
+            <div class="chip"><i>✨</i><div><b>Tu luz</b><span>Iluminas incluso mis días grises.</span></div></div>
+            <div class="chip"><i>💗</i><div><b>Tu amor</b><span>Me haces sentir en casa.</span></div></div>
+            <div class="chip"><i>😂</i><div><b>Tu risa</b><span>Mi sonido favorito.</span></div></div>
+            <div class="chip"><i>🤍</i><div><b>Tu forma de ser</b><span>Tan tú, tan perfecta.</span></div></div>
+            <div class="chip"><i>🫶</i><div><b>Tu apoyo</b><span>Siempre estás, de verdad.</span></div></div>
+            <div class="chip"><i>🌙</i><div><b>Tu calma</b><span>Me das paz sin decir nada.</span></div></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="qbox" id="qbox">
+            <b>¿Renovamos el “para siempre” por otro año? 💍</b>
+            <div class="muted" style="font-size:13px; margin-top:4px;">Intenta tocar “No” 😄</div>
+            <div class="qrow" id="btnArea">
+              <button class="yes" onclick="answer(true)">Sí 💖</button>
+              <button class="no" id="noBtn" onclick="answer(false)">No 🙈</button>
+            </div>
+            <div class="result" id="result"></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <b>Mensaje para enviarle a Gotito</b>
+        <button class="btn-ghost" onclick="closeShare()">Cerrar</button>
+      </div>
+      <div class="modal-body">
+        <div class="muted" style="font-size:13px; margin-bottom:10px;">
+          Si tu navegador lo permite, toca “Copiar”. Si no, copia el texto manualmente.
+        </div>
+        <code id="shareText"></code>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+          <button class="btn-primary" onclick="copyShare()">Copiar</button>
+          <button class="btn-ghost" onclick="closeShare()">Listo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- Dates ----------
+    const now = new Date();
+    document.getElementById("today").textContent =
+      now.toLocaleDateString("es-ES", { weekday:"long", day:"numeric", month:"long", year:"numeric" });
+
+    // Cambia esta fecha por el día que empezaron (AAAA-MM-DD)
+    const startDate = new Date("2021-02-14"); // <— EDITA AQUÍ
+    const days = Math.max(0, Math.floor((now - startDate) / (1000*60*60*24)));
+    document.getElementById("daysTogether").textContent = days.toLocaleString("es-ES");
+
+    // ---------- Letter reveal ----------
+    ["p1","p2","p3","sig"].forEach((id, i) => {
+      setTimeout(() => document.getElementById(id).classList.add("on"), 260 + i*520);
+    });
+
+    // ---------- Particles ----------
+    const holder = document.getElementById("particles");
+    for(let i=0;i<26;i++){
+      const p=document.createElement("div");
+      p.className="particle";
+      p.style.left = (Math.random()*100) + "vw";
+      p.style.bottom = (-50 - Math.random()*240) + "px";
+      p.style.animationDelay = (Math.random()*10) + "s";
+      p.style.animationDuration = (9 + Math.random()*10) + "s";
+      const s = 6 + Math.random()*10;
+      p.style.width = s + "px";
+      p.style.height = s + "px";
+      p.style.background = (Math.random() > 0.5)
+        ? "rgba(225,29,72,.12)"
+        : "rgba(124,58,237,.12)";
+      holder.appendChild(p);
+    }
+
+    // ---------- “No” button that moves ----------
+    const noBtn = document.getElementById("noBtn");
+    const area = document.getElementById("btnArea");
+    function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+    function moveNo(initial=false){
+      const rect = area.getBoundingClientRect();
+      const bw = noBtn.offsetWidth || 90;
+      const bh = noBtn.offsetHeight || 40;
+      const pad = 6;
+      const maxX = rect.width - bw - pad;
+      const maxY = rect.height - bh - pad;
+      const x = clamp(Math.random() * maxX, pad, maxX);
+      const y = clamp(Math.random() * maxY, pad, maxY);
+      noBtn.style.left = x + "px";
+      noBtn.style.top  = y + "px";
+      if(initial) noBtn.style.transform = "none";
+    }
+    setTimeout(()=>moveNo(true), 300);
+    noBtn.addEventListener("mouseenter", () => moveNo());
+    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); }, {passive:false});
+    area.addEventListener("touchstart", (e) => {
+      const t = e.touches[0];
+      const r = noBtn.getBoundingClientRect();
+      const dx = Math.abs(t.clientX - (r.left + r.width/2));
+      const dy = Math.abs(t.clientY - (r.top + r.height/2));
+      if(dx < 70 && dy < 55) moveNo();
+    }, {passive:true});
+
+    // ---------- Answer ----------
+    function answer(ok){
+      const r=document.getElementById("result");
+      if(ok){
+        r.textContent="Siempre supe que era un SÍ 😍💘";
+        confettiHearts();
+      }else{
+        r.textContent="Esa opción no cuenta… inténtalo otra vez 😘";
+        moveNo();
+      }
+    }
+    function confettiHearts(){
+      const box = document.getElementById("qbox");
+      for(let i=0;i<14;i++){
+        const s=document.createElement("div");
+        s.textContent = (i%3===0)?"💗":(i%3===1?"❤️":"💞");
+        s.style.position="absolute";
+        s.style.left = (20 + Math.random()*60) + "%";
+        s.style.top = "20px";
+        s.style.fontSize = (14 + Math.random()*10) + "px";
+        s.style.opacity="0";
+        s.style.transition="transform 900ms ease, opacity 900ms ease";
+        box.appendChild(s);
+        requestAnimationFrame(()=>{
+          s.style.opacity="1";
+          s.style.transform = `translate(${(-40 + Math.random()*80)}px, ${(-70 - Math.random()*60)}px) rotate(${(-25 + Math.random()*50)}deg)`;
+          s.style.opacity="0";
+        });
+        setTimeout(()=>s.remove(), 950);
+      }
+    }
+
+    // ---------- Share modal ----------
+    const modal = document.getElementById("modal");
+    const shareText = document.getElementById("shareText");
+    function openShare(){
+      const url = window.location.href;
+      shareText.textContent = `Gotito ❤️\n\nTe hice una sorpresa por nuestro 5º aniversario:\n${url}\n\nÁbrela y mira nuestra foto 🥹💌`;
+      modal.classList.add("show");
+    }
+    function closeShare(){ modal.classList.remove("show"); }
+    async function copyShare(){
+      try{ await navigator.clipboard.writeText(shareText.textContent); alert("Listo ✅ Copiado"); }
+      catch(e){ alert("No pude copiar automático. Copia el texto manualmente 💗"); }
+    }
+
+    // ---------- Soft music (Web Audio, no files) ----------
+    let audioCtx, masterGain, playing=false, intervalId=null;
+    const musicBtn = document.getElementById("musicBtn");
+    function setupAudio(){
+      if(audioCtx) return;
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.value = 0.0;
+      masterGain.connect(audioCtx.destination);
+    }
+    function playNote(freq, t, duration){
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      const filter = audioCtx.createBiquadFilter();
+      osc.type="sine"; osc.frequency.setValueAtTime(freq, t);
+      filter.type="lowpass"; filter.frequency.setValueAtTime(1200, t);
+      gain.gain.setValueAtTime(0.0001, t);
+      gain.gain.exponentialRampToValueAtTime(0.12, t + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + duration);
+      osc.connect(filter); filter.connect(gain); gain.connect(masterGain);
+      osc.start(t); osc.stop(t + duration + 0.02);
+    }
+    function startMusic(){
+      setupAudio();
+      if(audioCtx.state === "suspended") audioCtx.resume();
+      const melody = [392,440,523.25,440,349.23,392,493.88,392,329.63,392,440,392,349.23,392,523.25,493.88];
+      let step=0;
+      const nowT = audioCtx.currentTime;
+      masterGain.gain.cancelScheduledValues(nowT);
+      masterGain.gain.setValueAtTime(masterGain.gain.value, nowT);
+      masterGain.gain.linearRampToValueAtTime(0.35, nowT + 0.8);
+      const tempo=92, beat=60/tempo, noteDur=beat*0.85;
+      intervalId = setInterval(()=>{
+        const t=audioCtx.currentTime + 0.02;
+        const f=melody[step % melody.length];
+        playNote(f, t, noteDur);
+        if(step%2===0) playNote(f/2, t, noteDur*0.95);
+        step++;
+      }, beat*1000);
+      playing=true;
+      musicBtn.textContent="🎵 Música: Encendida";
+    }
+    function stopMusic(){
+      if(!audioCtx) return;
+      const nowT = audioCtx.currentTime;
+      masterGain.gain.cancelScheduledValues(nowT);
+      masterGain.gain.setValueAtTime(masterGain.gain.value, nowT);
+      masterGain.gain.linearRampToValueAtTime(0.0, nowT + 0.35);
+      if(intervalId){clearInterval(intervalId); intervalId=null;}
+      playing=false;
+      musicBtn.textContent="🎵 Música: Apagada";
+    }
+    function toggleMusic(){ if(!playing) startMusic(); else stopMusic(); }
+  </script>
+</body>
+</html>
